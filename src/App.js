@@ -5,6 +5,7 @@ import "./App.scss";
 
 import HomePage from "./pages/homepage/homepage.component";
 import ShopPage from "./pages/shop-page/shop-page.component";
+import Header from "./components/header/header.component";
 
 class App extends React.Component {
   constructor() {
@@ -15,6 +16,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
+        <Header />
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route path="/shop" component={ShopPage} />
