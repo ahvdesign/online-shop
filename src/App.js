@@ -1,5 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
+import { auth } from "./firebase/firebase.utils";
 
 import "./App.scss";
 
@@ -11,7 +12,21 @@ import Header from "./components/header/header.component";
 class App extends React.Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      currentUser: null,
+    };
+  }
+
+  unsubscribeFromAuth = null;
+
+  componentDidMount() {
+    this.unsubscribeFromAuth = auth.onAuthStateChanged((user) => {
+      this.setState({ currentUser: user });
+    });
+  }
+
+  componentWillUnmount() {
+    this.unsubscribeFromAuth();
   }
 
   render() {
