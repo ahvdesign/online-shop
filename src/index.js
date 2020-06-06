@@ -7,8 +7,10 @@ import App from "./App";
 
 import "./index.scss";
 
+import store from "./redux/store";
+
 ReactDOM.render(
-  <Provider>
+  <Provider store={store}>
     <React.StrictMode>
       <BrowserRouter>
         <App />
